@@ -1,0 +1,18 @@
+{
+  "name": "express_js_project",
+  "version": "1.0.0",
+  "description": "JS Backend Project with Express JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
