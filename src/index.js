@@ -2,6 +2,8 @@ const experss = require('express');
 const handlebars = require('express-handlebars');
 const path = require('path');
 
+const routes = require('./routes');
+
 const app = experss();
 const port = 5000;
 
@@ -14,9 +16,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(experss.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-    res.render('home', { layout: false });
-})
+app.use(routes);
 
 app.listen(port, () => (console.log(`Server is listening on port ${port}`)));
-
