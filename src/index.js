@@ -1,20 +1,14 @@
 const experss = require('express');
-const handlebars = require('express-handlebars');
-const path = require('path');
 
+const configHandlebars = require('./config/configHandlebars');
+const configExpress = require('./config/configExpress');
 const routes = require('./routes');
 
 const app = experss();
 const port = 5000;
 
-app.engine('hbs', handlebars.engine(
-    { extname: 'hbs', }
-));
-
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
-
-app.use(experss.static(path.join(__dirname, 'public')));
+configHandlebars(app);
+configExpress(app);
 
 app.use(routes);
 
