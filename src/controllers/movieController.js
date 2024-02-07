@@ -18,10 +18,10 @@ router.post('/create', async (req, res) => {
     }
 });
 
-router.get('/movies/:movieId', (req, res) => {
+router.get('/movies/:movieId', async (req, res) => {
     const movieId = req.params.movieId;
 
-    const movie = movieService.getMovieById(movieId);
+    const movie = await movieService.getMovieById(movieId).lean();
 
     movie.ratingStars = new Array(Number(movie.rating)).fill(true);
 
