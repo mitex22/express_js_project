@@ -158,6 +158,23 @@ img > .text-shadow {
   transition: 200ms ease-in-out;
 }
 
+.attach-cast {
+  color: #fff;
+  border: none;
+  padding: 15px;
+  outline: none;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-left: 10px;
+  background: #8b83b5;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 300ms ease-in-out;
+  -o-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+}
+
 .details:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
