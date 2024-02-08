@@ -30,8 +30,6 @@ const castSchema = new mongoose.Schema({
             message: (props) => `${props.value} is invalid URL!`
         }
     },
-    // TODO movie prop
-    // movie: {}
 });
 
 const Cast = mongoose.model('Cast', castSchema);

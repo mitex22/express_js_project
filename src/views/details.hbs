@@ -4,7 +4,8 @@
         <div class="card_left">
             <div class="card_datails">
 
-                {{!-- {{#with movie}} - change the context and you can uise the props directly, no need of MOVIE.title --}}
+                {{!-- {{#with movie}} - change the context and you can uise the props directly, no need of MOVIE.title
+                --}}
                 <h1>{{movie.title}}</h1>
                 <div class="card-movie">
                     <div class="first-info">
@@ -13,7 +14,8 @@
                     </div>
                     <div class="second-info">
                         <p class="card-year">Year: {{movie.year}}</p>
-                        <p class="card-ranking">Rating: <span id="stars">{{#each movie.ratingStars}} &#x2605; {{/each}}</span></p>
+                        <p class="card-ranking">Rating: <span id="stars">{{#each movie.ratingStars}} &#x2605;
+                                {{/each}}</span></p>
                     </div>
 
                 </div>
@@ -24,6 +26,27 @@
         <div class="card_right">
             <img src="{{movie.imageUrl}}" alt="image">
         </div>
+    </div>
+
+    <div class="main-cast-card">
+        {{#each movie.casts}}
+        <div class="cast-card">
+            <div class="card-img">
+                <img src="{{castImage}}" alt="{{name}}">
+            </div>
+            <div class="cast-info">
+                <h1>{{name}}</h1>
+                <h3>Age: {{age}}</h3>
+                <h3>Born: {{born}}</h3>
+                <h3>Name in Movie: {{nameInMovie}}</h3>
+            </div>
+        </div>
+        <!-- If there are no casts in the database -->
+        {{else}}
+        <div class="no-posts">
+            <p class="no-offer">There are no casts yet...</p>
+        </div>
+        {{/each}}
     </div>
 
 </section>

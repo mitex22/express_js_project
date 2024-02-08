@@ -4,7 +4,7 @@ exports.create = (movieData) => Movie.create(movieData);
 
 exports.getAll = () => Movie.find();
 
-exports.getMovieById = (movieId) => Movie.findById(movieId);
+exports.getMovieById = (movieId) => Movie.findById(movieId).populate('casts');
 
 exports.attach = async (movieId, castId) => {
     // METHOD I
