@@ -1,16 +1,10 @@
 const Movie = require('../models/Movie');
 
-exports.create = (movieData) => {
-    return Movie.create(movieData);
-}
+exports.create = (movieData) => Movie.create(movieData);
 
-exports.getAll = () => {
-    return Movie.find();
-}
+exports.getAll = () => Movie.find();
 
-exports.getMovieById = (movieId) => {
-    return Movie.findById(movieId);
-}
+exports.getMovieById = (movieId) => Movie.findById(movieId);
 
 exports.search = async (title, genre, year) => {
     let reducedMovies = await Movie.find().lean();
