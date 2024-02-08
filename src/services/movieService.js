@@ -18,20 +18,20 @@ exports.attach = async (movieId, castId) => {
     // return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
 };
 
-exports.search = async (title, genre, year) => {
-    let reducedMovies = await Movie.find().lean();
+exports.search = (title, genre, year) => {
+    let query = {};
 
     if (title) {
-        reducedMovies = reducedMovies.filter((movie) => (movie.title.toLowerCase().includes(title.toLowerCase())));
+        query.title = new RegExp(title, 'i');
     }
 
     if (genre) {
-        reducedMovies = reducedMovies.filter((movie) => (movie.genre.toLowerCase() === genre.toLowerCase()));
+        query.genre = genre.toLowerCase();
     }
 
     if (year) {
-        reducedMovies = reducedMovies.filter((movie) => (movie.year === year));
+        query.year = year;
     }
 
-    return reducedMovies;
+    return Movie.find(query);
 }
