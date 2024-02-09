@@ -25,12 +25,10 @@ router.get('/movies/:movieId', async (req, res) => {
 
     const movie = await movieService.getMovieById(movieId).lean();
 
-    // в castService има закоментиран метод getCastsByIds, защото ползваме .populate('casts') при getMovieById
-    // const casts = await castService.getCastsByIds(movie.casts).lean();
-
+    // TODO: To be implemented with handlebars helper
     movie.ratingStars = new Array(Number(movie.rating)).fill(true);
 
-    res.render('details', { movie });
+    res.render('movie/details', { movie });
 });
 
 router.get('/movies/:movieId/attach', isAuth, async (req, res) => {
