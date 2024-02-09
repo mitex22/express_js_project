@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         lowercase: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -26,22 +27,6 @@ userSchema.virtual('rePassword')
             throw new mongoose.MongooseError('Password and re-password fields do not match!');
         }
     });
-
-// AI GENERATED
-// userSchema.methods.checkPassword = async function(password){
-//     return await bcrypt.compare(password, this.password);
-// };
-
-// hash the password before saving it to the database
-// userSchema.pre('save', async function () {
-//     if (!this.isModified('password')) return next();
-//     try{
-//         const salt = await bcrypt.genSalt(10);
-//         this.password = await bcrypt.hash(this.password, salt);
-//     }catch(err){
-//         console.log(err);
-//     }
-// });
 
 const User = mongoose.model('User', userSchema);
 
