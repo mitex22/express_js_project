@@ -26,7 +26,7 @@ router.get('/movies/:movieId', async (req, res) => {
 
     const movie = await movieService.getMovieById(movieId).lean();
 
-    const isOwner = movie.owner == req.user._id;
+    const isOwner = movie.owner == req.user?._id;
 
     // TODO: To be implemented with handlebars helper
     movie.ratingStars = new Array(Number(movie.rating)).fill(true);
