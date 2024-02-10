@@ -3,16 +3,22 @@ const mongoose = require('mongoose');
 const movieSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        minLength: [5, 'Movie should be atleast 5 chars long! ...FROM Movie model'],
+        match: [/^[a-zA-z0-9 ]+$/, 'Movie should contain english letters and digits only! ...FROM Movie model']
     },
     genre: {
         type: String,
         required: true,
-        lowercase: true
+        lowercase: true,
+        minLength: [5, 'Genre should be atleast 5 chars long! ...FROM Movie model'],
+        match: [/^[a-zA-z0-9 ]+$/, 'Genre should contain english letters and digits only! ...FROM Movie model']
     },
     director: {
         type: String,
-        required: true
+        required: true,
+        minLength: [5, 'Director should be atleast 5 chars long! ...FROM Movie model'],
+        match: [/^[a-zA-z0-9 ]+$/, 'Director should contain english letters and digits only! ...FROM Movie model']
     },
     year: {
         type: Number,
