@@ -12,6 +12,10 @@ exports.register = async (userData) => {
         throw new Error('Email already exists! ...FROM authService');
     }
 
+    if (userData.password !== userData.rePasword) {
+        throw new Error('Password and Repeat-Password fields do not match! ...FROM authService');
+    }
+
     return User.create(userData);
 };
 

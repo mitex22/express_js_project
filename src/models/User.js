@@ -25,13 +25,6 @@ userSchema.pre('save', async function () {
     this.password = hash;
 });
 
-userSchema.virtual('rePassword')
-    .set(function (value) {
-        if (value !== this.password) {
-            throw new mongoose.MongooseError('Password and re-password fields do not match!');
-        }
-    });
-
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
