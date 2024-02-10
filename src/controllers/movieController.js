@@ -26,7 +26,7 @@ router.get('/movies/:movieId', async (req, res) => {
 
     const movie = await movieService.getMovieById(movieId).lean();
 
-    const isOwner = movie.owner == req.user?._id;
+    const isOwner = movie.owner && movie.owner == req.user?._id;
 
     // TODO: To be implemented with handlebars helper
     movie.ratingStars = new Array(Number(movie.rating)).fill(true);
@@ -59,6 +59,15 @@ router.get('/movies/:movieId/edit', isAuth, async (req, res) => {
     const movie = await movieService.getMovieById(movieId).lean();
 
     res.render('movie/edit', { movie });
+})
+
+router.get('/movies/:movieId/delete', isAuth, async (req, res) => {
+
+    const movieId = req.params.movieId;
+
+    const movie = await movieService.deleteMovieById(movieId).lean();
+
+    res.redirect('/');
 })
 
 module.exports = router;

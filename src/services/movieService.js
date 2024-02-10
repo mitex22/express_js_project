@@ -6,6 +6,8 @@ exports.getAll = () => Movie.find();
 
 exports.getMovieById = (movieId) => Movie.findById(movieId).populate('casts');
 
+exports.deleteMovieById = (movieId) => Movie.findByIdAndDelete(movieId);
+
 exports.attach = async (movieId, castId) => {
     // METHOD I
     const movie = await this.getMovieById(movieId);
